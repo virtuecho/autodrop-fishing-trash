@@ -1,6 +1,7 @@
 package com.autodrop.fishingtrash.config;
 
 import com.autodrop.fishingtrash.AutoDropFishingTrash;
+import com.autodrop.fishingtrash.loot.FishingLootRule;
 import com.autodrop.fishingtrash.util.ItemIdUtil;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,10 +24,14 @@ public final class AutoDropConfig {
 
 	public boolean enabled = true;
 	public boolean onlyWhileFishing = true;
-	public boolean pauseInScreens = true;
+	public boolean pauseInScreens = false;
 	public int scanIntervalTicks = 5;
+	public DropDirection dropDirection = DropDirection.CURRENT_VIEW;
+	public int rotatedDropIntervalTicks = 5;
 	public Set<String> disabledDefaultRules = new LinkedHashSet<>();
+	public Set<String> enabledDefaultRules = new LinkedHashSet<>();
 	public Set<String> disabledExtraRules = new LinkedHashSet<>();
+	public Set<String> enabledExtraRules = new LinkedHashSet<>();
 	public List<String> extraItemIds = new ArrayList<>();
 
 	public static AutoDropConfig get() {
@@ -71,28 +76,20 @@ public final class AutoDropConfig {
 		}
 	}
 
-	public boolean isDefaultRuleEnabled(String ruleKey) {
-		return !disabledDefaultRules.contains(ruleKey);
+	public boolean isDefaultRuleEnabled(FishingLootRule rule) {
+		return isRuleEnabled(rule, enabledDefaultRules, disabledDefaultRules);
 	}
 
-	public void setDefaultRuleEnabled(String ruleKey, boolean enabled) {
-		if (enabled) {
-			disabledDefaultRules.remove(ruleKey);
-		} else {
-			disabledDefaultRules.add(ruleKey);
-		}
+	public void setDefaultRuleEnabled(FishingLootRule rule, boolean enabled) {
+		setRuleEnabled(rule, enabled, enabledDefaultRules, disabledDefaultRules);
 	}
 
-	public boolean isExtraRuleEnabled(String ruleKey) {
-		return !disabledExtraRules.contains(ruleKey);
+	public boolean isExtraRuleEnabled(FishingLootRule rule) {
+		return isRuleEnabled(rule, enabledExtraRules, disabledExtraRules);
 	}
 
-	public void setExtraRuleEnabled(String ruleKey, boolean enabled) {
-		if (enabled) {
-			disabledExtraRules.remove(ruleKey);
-		} else {
-			disabledExtraRules.add(ruleKey);
-		}
+	public void setExtraRuleEnabled(FishingLootRule rule, boolean enabled) {
+		setRuleEnabled(rule, enabled, enabledExtraRules, disabledExtraRules);
 	}
 
 	public Set<String> getNormalizedExtraItemIds() {
@@ -104,15 +101,56 @@ public final class AutoDropConfig {
 			disabledDefaultRules = new LinkedHashSet<>();
 		}
 
+		if (enabledDefaultRules == null) {
+			enabledDefaultRules = new LinkedHashSet<>();
+		}
+
 		if (disabledExtraRules == null) {
 			disabledExtraRules = new LinkedHashSet<>();
+		}
+
+		if (enabledExtraRules == null) {
+			enabledExtraRules = new LinkedHashSet<>();
 		}
 
 		if (extraItemIds == null) {
 			extraItemIds = new ArrayList<>();
 		}
 
+		if (dropDirection == null) {
+			dropDirection = DropDirection.CURRENT_VIEW;
+		}
+
 		scanIntervalTicks = Math.max(1, Math.min(200, scanIntervalTicks));
+		rotatedDropIntervalTicks = Math.max(1, Math.min(200, rotatedDropIntervalTicks));
 		extraItemIds = ItemIdUtil.normalizeItemIds(extraItemIds);
+	}
+
+	private static boolean isRuleEnabled(FishingLootRule rule, Set<String> enabledRules, Set<String> disabledRules) {
+		if (rule.defaultEnabled()) {
+			return !disabledRules.contains(rule.key());
+		}
+
+		return enabledRules.contains(rule.key());
+	}
+
+	private static void setRuleEnabled(FishingLootRule rule, boolean enabled, Set<String> enabledRules, Set<String> disabledRules) {
+		if (rule.defaultEnabled()) {
+			enabledRules.remove(rule.key());
+
+			if (enabled) {
+				disabledRules.remove(rule.key());
+			} else {
+				disabledRules.add(rule.key());
+			}
+		} else {
+			disabledRules.remove(rule.key());
+
+			if (enabled) {
+				enabledRules.add(rule.key());
+			} else {
+				enabledRules.remove(rule.key());
+			}
+		}
 	}
 }

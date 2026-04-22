@@ -4,103 +4,145 @@ import java.util.List;
 
 public final class FishingLootRules {
 	public static final List<FishingLootRule> DEFAULT_RULES = List.of(
-		rule("minecraft:cod", FishingLootRuleGroup.FISH),
-		rule("minecraft:salmon", FishingLootRuleGroup.FISH),
-		rule("minecraft:pufferfish", FishingLootRuleGroup.FISH),
-		rule("minecraft:tropical_fish", FishingLootRuleGroup.FISH),
+		defaultRule("minecraft:cod", FishingLootRuleGroup.FISH),
+		defaultRule("minecraft:salmon", FishingLootRuleGroup.FISH),
+		defaultRule("minecraft:pufferfish", FishingLootRuleGroup.FISH),
+		defaultRule("minecraft:tropical_fish", FishingLootRuleGroup.FISH),
 
-		rule("minecraft:bow", FishingLootRuleGroup.TREASURE),
-		rule("minecraft:enchanted_book", FishingLootRuleGroup.TREASURE),
-		rule("minecraft:fishing_rod", FishingLootRuleGroup.TREASURE),
-		rule("minecraft:name_tag", FishingLootRuleGroup.TREASURE),
-		rule("minecraft:nautilus_shell", FishingLootRuleGroup.TREASURE),
-		rule("minecraft:saddle", FishingLootRuleGroup.TREASURE),
+		defaultRule("minecraft:bow", FishingLootRuleGroup.TREASURE),
+		defaultRuleDisabled("minecraft:enchanted_book", FishingLootRuleGroup.TREASURE),
+		defaultRuleDisabled("minecraft:fishing_rod", FishingLootRuleGroup.TREASURE),
+		defaultRule("minecraft:name_tag", FishingLootRuleGroup.TREASURE),
+		defaultRule("minecraft:nautilus_shell", FishingLootRuleGroup.TREASURE),
+		defaultRule("minecraft:saddle", FishingLootRuleGroup.TREASURE),
 
-		rule("minecraft:lily_pad", FishingLootRuleGroup.JUNK),
-		rule("minecraft:bone", FishingLootRuleGroup.JUNK),
-		rule("minecraft:bowl", FishingLootRuleGroup.JUNK),
-		rule("minecraft:leather", FishingLootRuleGroup.JUNK),
-		rule("minecraft:leather_boots", FishingLootRuleGroup.JUNK),
-		rule("minecraft:rotten_flesh", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:lily_pad", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:bone", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:bowl", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:leather", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:leather_boots", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:rotten_flesh", FishingLootRuleGroup.JUNK),
 		waterBottleRule(),
-		rule("minecraft:tripwire_hook", FishingLootRuleGroup.JUNK),
-		rule("minecraft:stick", FishingLootRuleGroup.JUNK),
-		rule("minecraft:string", FishingLootRuleGroup.JUNK),
-		rule("minecraft:ink_sac", FishingLootRuleGroup.JUNK),
-		rule("minecraft:bamboo", FishingLootRuleGroup.JUNGLE_JUNK)
+		defaultRule("minecraft:tripwire_hook", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:stick", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:string", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:ink_sac", FishingLootRuleGroup.JUNK),
+		defaultRule("minecraft:bamboo", FishingLootRuleGroup.JUNGLE_JUNK)
 	);
 
 	public static final List<FishingLootRule> EXTRA_RULES = List.of(
-		rule("minecraft:wooden_sword", FishingLootRuleGroup.TOOL),
-		rule("minecraft:wooden_pickaxe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:wooden_axe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:wooden_shovel", FishingLootRuleGroup.TOOL),
-		rule("minecraft:wooden_hoe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:stone_sword", FishingLootRuleGroup.TOOL),
-		rule("minecraft:stone_pickaxe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:stone_axe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:stone_shovel", FishingLootRuleGroup.TOOL),
-		rule("minecraft:stone_hoe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:iron_sword", FishingLootRuleGroup.TOOL),
-		rule("minecraft:iron_pickaxe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:iron_axe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:iron_shovel", FishingLootRuleGroup.TOOL),
-		rule("minecraft:iron_hoe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:golden_sword", FishingLootRuleGroup.TOOL),
-		rule("minecraft:golden_pickaxe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:golden_axe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:golden_shovel", FishingLootRuleGroup.TOOL),
-		rule("minecraft:golden_hoe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:diamond_sword", FishingLootRuleGroup.TOOL),
-		rule("minecraft:diamond_pickaxe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:diamond_axe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:diamond_shovel", FishingLootRuleGroup.TOOL),
-		rule("minecraft:diamond_hoe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:netherite_sword", FishingLootRuleGroup.TOOL),
-		rule("minecraft:netherite_pickaxe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:netherite_axe", FishingLootRuleGroup.TOOL),
-		rule("minecraft:netherite_shovel", FishingLootRuleGroup.TOOL),
-		rule("minecraft:netherite_hoe", FishingLootRuleGroup.TOOL),
+		extraRule("minecraft:wooden_sword", ExtraItemMaterial.WOODEN),
+		extraRule("minecraft:wooden_pickaxe", ExtraItemMaterial.WOODEN),
+		extraRule("minecraft:wooden_axe", ExtraItemMaterial.WOODEN),
+		extraRule("minecraft:wooden_shovel", ExtraItemMaterial.WOODEN),
+		extraRule("minecraft:wooden_hoe", ExtraItemMaterial.WOODEN),
+		extraRule("minecraft:stone_sword", ExtraItemMaterial.STONE),
+		extraRule("minecraft:stone_pickaxe", ExtraItemMaterial.STONE),
+		extraRule("minecraft:stone_axe", ExtraItemMaterial.STONE),
+		extraRule("minecraft:stone_shovel", ExtraItemMaterial.STONE),
+		extraRule("minecraft:stone_hoe", ExtraItemMaterial.STONE),
+		extraRule("minecraft:iron_sword", ExtraItemMaterial.IRON),
+		extraRule("minecraft:iron_pickaxe", ExtraItemMaterial.IRON),
+		extraRule("minecraft:iron_axe", ExtraItemMaterial.IRON),
+		extraRule("minecraft:iron_shovel", ExtraItemMaterial.IRON),
+		extraRule("minecraft:iron_hoe", ExtraItemMaterial.IRON),
+		extraRule("minecraft:golden_sword", ExtraItemMaterial.GOLDEN),
+		extraRule("minecraft:golden_pickaxe", ExtraItemMaterial.GOLDEN),
+		extraRule("minecraft:golden_axe", ExtraItemMaterial.GOLDEN),
+		extraRule("minecraft:golden_shovel", ExtraItemMaterial.GOLDEN),
+		extraRule("minecraft:golden_hoe", ExtraItemMaterial.GOLDEN),
+		extraRuleDisabled("minecraft:diamond_sword", ExtraItemMaterial.DIAMOND),
+		extraRuleDisabled("minecraft:diamond_pickaxe", ExtraItemMaterial.DIAMOND),
+		extraRuleDisabled("minecraft:diamond_axe", ExtraItemMaterial.DIAMOND),
+		extraRuleDisabled("minecraft:diamond_shovel", ExtraItemMaterial.DIAMOND),
+		extraRuleDisabled("minecraft:diamond_hoe", ExtraItemMaterial.DIAMOND),
+		extraRuleDisabled("minecraft:netherite_sword", ExtraItemMaterial.NETHERITE),
+		extraRuleDisabled("minecraft:netherite_pickaxe", ExtraItemMaterial.NETHERITE),
+		extraRuleDisabled("minecraft:netherite_axe", ExtraItemMaterial.NETHERITE),
+		extraRuleDisabled("minecraft:netherite_shovel", ExtraItemMaterial.NETHERITE),
+		extraRuleDisabled("minecraft:netherite_hoe", ExtraItemMaterial.NETHERITE),
 
-		rule("minecraft:leather_helmet", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:leather_chestplate", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:leather_leggings", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:leather_boots", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:chainmail_helmet", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:chainmail_chestplate", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:chainmail_leggings", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:chainmail_boots", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:iron_helmet", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:iron_chestplate", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:iron_leggings", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:iron_boots", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:golden_helmet", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:golden_chestplate", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:golden_leggings", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:golden_boots", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:diamond_helmet", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:diamond_chestplate", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:diamond_leggings", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:diamond_boots", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:netherite_helmet", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:netherite_chestplate", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:netherite_leggings", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:netherite_boots", FishingLootRuleGroup.ARMOR),
-		rule("minecraft:turtle_helmet", FishingLootRuleGroup.ARMOR)
+		extraRule("minecraft:leather_helmet", ExtraItemMaterial.LEATHER),
+		extraRule("minecraft:leather_chestplate", ExtraItemMaterial.LEATHER),
+		extraRule("minecraft:leather_leggings", ExtraItemMaterial.LEATHER),
+		extraRule("minecraft:leather_boots", ExtraItemMaterial.LEATHER),
+		extraRule("minecraft:chainmail_helmet", ExtraItemMaterial.CHAINMAIL),
+		extraRule("minecraft:chainmail_chestplate", ExtraItemMaterial.CHAINMAIL),
+		extraRule("minecraft:chainmail_leggings", ExtraItemMaterial.CHAINMAIL),
+		extraRule("minecraft:chainmail_boots", ExtraItemMaterial.CHAINMAIL),
+		extraRule("minecraft:iron_helmet", ExtraItemMaterial.IRON),
+		extraRule("minecraft:iron_chestplate", ExtraItemMaterial.IRON),
+		extraRule("minecraft:iron_leggings", ExtraItemMaterial.IRON),
+		extraRule("minecraft:iron_boots", ExtraItemMaterial.IRON),
+		extraRule("minecraft:golden_helmet", ExtraItemMaterial.GOLDEN),
+		extraRule("minecraft:golden_chestplate", ExtraItemMaterial.GOLDEN),
+		extraRule("minecraft:golden_leggings", ExtraItemMaterial.GOLDEN),
+		extraRule("minecraft:golden_boots", ExtraItemMaterial.GOLDEN),
+		extraRuleDisabled("minecraft:diamond_helmet", ExtraItemMaterial.DIAMOND),
+		extraRuleDisabled("minecraft:diamond_chestplate", ExtraItemMaterial.DIAMOND),
+		extraRuleDisabled("minecraft:diamond_leggings", ExtraItemMaterial.DIAMOND),
+		extraRuleDisabled("minecraft:diamond_boots", ExtraItemMaterial.DIAMOND),
+		extraRuleDisabled("minecraft:netherite_helmet", ExtraItemMaterial.NETHERITE),
+		extraRuleDisabled("minecraft:netherite_chestplate", ExtraItemMaterial.NETHERITE),
+		extraRuleDisabled("minecraft:netherite_leggings", ExtraItemMaterial.NETHERITE),
+		extraRuleDisabled("minecraft:netherite_boots", ExtraItemMaterial.NETHERITE),
+		extraRule("minecraft:turtle_helmet", ExtraItemMaterial.TURTLE)
 	);
 
 	private FishingLootRules() {
 	}
 
-	private static FishingLootRule rule(String itemId, FishingLootRuleGroup group) {
-		return new FishingLootRule(itemId, itemId, translationKey(itemId), group, false);
+	private static FishingLootRule defaultRule(String itemId, FishingLootRuleGroup group) {
+		return defaultRule(itemId, group, true);
+	}
+
+	private static FishingLootRule defaultRuleDisabled(String itemId, FishingLootRuleGroup group) {
+		return defaultRule(itemId, group, false);
+	}
+
+	private static FishingLootRule defaultRule(String itemId, FishingLootRuleGroup group, boolean defaultEnabled) {
+		return new FishingLootRule(itemId, itemId, translationKey(itemId), group.translationKey(), defaultEnabled, false);
+	}
+
+	private static FishingLootRule extraRule(String itemId, ExtraItemMaterial material) {
+		return extraRule(itemId, material, true);
+	}
+
+	private static FishingLootRule extraRuleDisabled(String itemId, ExtraItemMaterial material) {
+		return extraRule(itemId, material, false);
+	}
+
+	private static FishingLootRule extraRule(String itemId, ExtraItemMaterial material, boolean defaultEnabled) {
+		return new FishingLootRule(itemId, itemId, translationKey(itemId), material.translationKey(), defaultEnabled, false);
 	}
 
 	private static FishingLootRule waterBottleRule() {
-		return new FishingLootRule("minecraft:potion", "minecraft:potion", "rule.autodrop_fishing_trash.water_bottle", FishingLootRuleGroup.JUNK, true);
+		return new FishingLootRule("minecraft:potion", "minecraft:potion", "rule.autodrop_fishing_trash.water_bottle", FishingLootRuleGroup.JUNK.translationKey(), true, true);
 	}
 
 	private static String translationKey(String itemId) {
 		return "rule.autodrop_fishing_trash." + itemId.replace(':', '.');
+	}
+
+	private enum ExtraItemMaterial {
+		WOODEN("subcategory.autodrop_fishing_trash.wooden"),
+		STONE("subcategory.autodrop_fishing_trash.stone"),
+		LEATHER("subcategory.autodrop_fishing_trash.leather"),
+		CHAINMAIL("subcategory.autodrop_fishing_trash.chainmail"),
+		IRON("subcategory.autodrop_fishing_trash.iron"),
+		GOLDEN("subcategory.autodrop_fishing_trash.golden"),
+		DIAMOND("subcategory.autodrop_fishing_trash.diamond"),
+		NETHERITE("subcategory.autodrop_fishing_trash.netherite"),
+		TURTLE("subcategory.autodrop_fishing_trash.turtle");
+
+		private final String translationKey;
+
+		ExtraItemMaterial(String translationKey) {
+			this.translationKey = translationKey;
+		}
+
+		private String translationKey() {
+			return translationKey;
+		}
 	}
 }

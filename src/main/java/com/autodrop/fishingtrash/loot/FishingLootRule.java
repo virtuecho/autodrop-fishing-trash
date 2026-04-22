@@ -7,7 +7,14 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 
-public record FishingLootRule(String key, String itemId, String nameTranslationKey, FishingLootRuleGroup group, boolean waterBottleOnly) {
+public record FishingLootRule(
+	String key,
+	String itemId,
+	String nameTranslationKey,
+	String subcategoryTranslationKey,
+	boolean defaultEnabled,
+	boolean waterBottleOnly
+) {
 	public boolean matches(ItemStack stack) {
 		if (waterBottleOnly) {
 			return isWaterBottle(stack);

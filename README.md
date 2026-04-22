@@ -25,9 +25,12 @@ Open Minecraft's Mods screen with Mod Menu, select AutoDrop Fishing Trash, then 
 
 - Enabled: master switch.
 - Only While Fishing: runs while holding a fishing rod or while a bobber is cast.
-- Pause In Screens: avoids dropping while inventory, chests, or config screens are open.
+- Pause In Screens: avoids dropping while inventory, chests, or config screens are open. This is off by default.
 - Scan Interval: how often the inventory is checked, in ticks. 20 ticks equals 1 second.
-- Extra Items: toggle preset tools and armor.
+- Drop Direction: keeps vanilla current-view dropping, or temporarily changes the server-side horizontal drop direction.
+- Rotated Drop Interval: minimum ticks between rotated drop batches when Drop Direction is not Current View.
+- Default Drop List: grouped into Fish, Treasure, Junk, and Jungle Junk. Enchanted books and fishing rods are off by default.
+- Extra Items: grouped by material. Diamond and netherite presets are off by default.
 - Extra Item IDs: add custom item IDs, such as `minecraft:kelp`. For vanilla items, `kelp` is also accepted and becomes `minecraft:kelp`.
 
 The config file is written to `.minecraft/config/autodrop-fishing-trash.json`.

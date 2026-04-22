@@ -16,13 +16,13 @@ public final class DropMatcher {
 		}
 
 		for (FishingLootRule rule : FishingLootRules.DEFAULT_RULES) {
-			if (config.isDefaultRuleEnabled(rule.key()) && rule.matches(stack)) {
+			if (config.isDefaultRuleEnabled(rule) && rule.matches(stack)) {
 				return true;
 			}
 		}
 
 		for (FishingLootRule rule : FishingLootRules.EXTRA_RULES) {
-			if (config.isExtraRuleEnabled(rule.key()) && rule.matches(stack)) {
+			if (config.isExtraRuleEnabled(rule) && rule.matches(stack)) {
 				return true;
 			}
 		}
